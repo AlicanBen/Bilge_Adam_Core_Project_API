@@ -10,14 +10,14 @@ namespace Bilge_Adam_Core_Project.BLL.Abstract
     {
         User GetUserById(int userId);
         ICollection<User> GetUserList();
-        ICollection<Fav_Watch_List> GetAllUserFavs(int userId);
-        ICollection<Fav_Watch_List> GetAllUserWatches(int userId);
+        ICollection<Movie> GetAllUserFavs(int userId);
+        ICollection<Movie> GetAllUserWatches(int userId);
         bool Add(User user);
         bool AddMovieToList(User user, Movie movie,string type);
         Task<bool> AddAsync(User user);
         bool SoftDelete(User user);
         Task<bool> SoftDeleteAsync(User user);
-        bool SoftDeleteMovieToList(Fav_Watch_List fav_Watch_List);
+        bool SoftDeleteMovieToList(User user, Movie movie,string type);
         bool Update(User user);
         Task<bool> UpdateAsync(User user);
 

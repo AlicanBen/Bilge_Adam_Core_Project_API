@@ -34,7 +34,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         // GET: api/User/GetUserFavs/1
         [Route("[action]/{id}")]
         [HttpGet]
-        public IEnumerable<Fav_Watch_List> GetUserFavs(int id)
+        public IEnumerable<Movie> GetUserFavs(int id)
         {
             return _userService.GetAllUserFavs(id);
         }
@@ -43,7 +43,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         // GET: api/User/GetUserWatches/1
         [Route("[action]/{id}")]
         [HttpGet]
-        public IEnumerable<Fav_Watch_List> GetUserWatches(int id)
+        public IEnumerable<Movie> GetUserWatches(int id)
         {
             return _userService.GetAllUserWatches(id);
         }
@@ -52,7 +52,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         // POST: api/User
         [Route("[action]")]
         [HttpPost]
-        public void Add([FromBody] User user)
+        public void AddUser([FromBody] User user)
         {
             _userService.Add(user);
         }
@@ -60,17 +60,31 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         // PUT: api/User/5
         [Route("[action]")]
         [HttpPut]
-        public void Put( [FromBody] User user)
+        public void UpdateUser( [FromBody] User user)
         {
             _userService.Update(user);
         }
 
         // DELETE: api/ApiWithActions/5
         [Route("[action]")]
-        [HttpDelete("{id}")]
+        [HttpDelete]
         public void Delete([FromBody] User user)
         {
             _userService.SoftDelete(user);
+        }
+
+        [Route("[action]")]
+        [HttpDelete]
+        public void DeleteFavs([FromBody] User user,[FromBody]  Movie movie)
+        {
+            _userService.SoftDeleteMovieToList(user,movie,"Favorite");
+        }
+
+        [Route("[action]")]
+        [HttpDelete]
+        public void DeleteWatches([FromBody] User user,[FromBody]  Movie movie)
+        {
+            _userService.SoftDeleteMovieToList(user,movie,"Watch");
         }
     }
 }

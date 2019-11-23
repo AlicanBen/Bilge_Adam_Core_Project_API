@@ -36,7 +36,7 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
             return _iUserRepository.Get(x => x.Id == userId);
         }
 
-        public ICollection<Fav_Watch_List> GetAllUserFavs(int userId)
+        public ICollection<Movie> GetAllUserFavs(int userId)
         {
             return _iUserRepository.UserFavs(userId);
         }
@@ -46,7 +46,7 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
             return _iUserRepository.GetAll();
         }
 
-        public ICollection<Fav_Watch_List> GetAllUserWatches(int userId)
+        public ICollection<Movie> GetAllUserWatches(int userId)
         {
             return _iUserRepository.UserWatches(userId);
         }
@@ -93,9 +93,19 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
 
         }
 
-        public bool SoftDeleteMovieToList(Fav_Watch_List fav_Watch_List)
+        public bool SoftDeleteMovieToList(User user, Movie movie, string type)
         {
-            return _i_Fav_Watch_List.SoftDelete(fav_Watch_List);
+            Fav_Watch_List fav_Watch = new Fav_Watch_List
+            {
+                Movie = movie,
+                MovieId = movie.Id,
+                User = user,
+                UserId = user.Id,
+                IsDelete = false,
+                ListType =type,
+                DateOfAdd = DateTime.Now
+            };
+            return _i_Fav_Watch_List.SoftDelete(fav_Watch);
         }
     }
 }
