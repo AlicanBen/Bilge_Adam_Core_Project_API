@@ -77,14 +77,14 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
 
       
 
-        public bool AddMovieToList(User user, Movie movie, string type)
+        public bool AddMovieToList(int userId,  Movie movie, string type)
         {
             Fav_Watch_List fav_Watch = new Fav_Watch_List
             {
                 Movie = movie,
                 MovieId = movie.Id,
-                User = user,
-                UserId = user.Id,
+                User = _iUserRepository.Get(x => x.Id == userId),
+                UserId = userId,
                 IsDelete = false,
                 ListType =type,
                 DateOfAdd = DateTime.Now
@@ -93,14 +93,14 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
 
         }
 
-        public bool SoftDeleteMovieToList(User user, Movie movie, string type)
+        public bool SoftDeleteMovieToList(int userId, Movie movie, string type)
         {
             Fav_Watch_List fav_Watch = new Fav_Watch_List
             {
                 Movie = movie,
                 MovieId = movie.Id,
-                User = user,
-                UserId = user.Id,
+                User = _iUserRepository.Get(x => x.Id == userId),
+                UserId =userId,
                 IsDelete = false,
                 ListType =type,
                 DateOfAdd = DateTime.Now

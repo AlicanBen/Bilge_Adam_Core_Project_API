@@ -16,20 +16,45 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
     {
         MovieService _movieService = new MovieService(new MovieRepository());
         [HttpGet]
-        public IEnumerable<Movie> GetMovieList()
+        public ICollection<Movie> GetMovieList()
         {
             return _movieService.GetMovieList();
         }
-        [HttpGet("{id}", Name = "GetMovieById")]
+
+        [Route("[action]")]
+        [HttpGet("{id}")]
         public Movie GetMovieById(int id)
         {
             return _movieService.GetMovieById(id);
         }
-         [Route("[action]")]
+        [Route("[action]")]
+        [HttpGet("{id}")]
+        public ICollection<Director> GetMovieDirectors(int movieId)
+        {
+            return _movieService.MovieDirectors(movieId);
+        }
+
+
+        [Route("[action]")]
+        [HttpPut]
+        public void Update([FromBody] Movie movie)
+        {
+            _movieService.Update(movie);
+        }
+        
+        [Route("[action]")]
         [HttpPost]
         public void Add([FromBody] Movie movie)
         {
             _movieService.Add(movie);
         }
+
+        [Route("[action]")]
+        [HttpDelete]
+        public void Delete([FromBody] Movie movie)
+        {
+            _movieService.SoftDelete(movie);
+        }
+
     }
 }

@@ -19,7 +19,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
      
         // GET: api/User
         [HttpGet]
-        public IEnumerable<User> GetUserList()
+        public ICollection<User> GetUserList()
         {
             return _userService.GetUserList();
         }
@@ -34,7 +34,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         // GET: api/User/GetUserFavs/1
         [Route("[action]/{id}")]
         [HttpGet]
-        public IEnumerable<Movie> GetUserFavs(int id)
+        public ICollection<Movie> GetUserFavs(int id)
         {
             return _userService.GetAllUserFavs(id);
         }
@@ -43,7 +43,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         // GET: api/User/GetUserWatches/1
         [Route("[action]/{id}")]
         [HttpGet]
-        public IEnumerable<Movie> GetUserWatches(int id)
+        public ICollection<Movie> GetUserWatches(int id)
         {
             return _userService.GetAllUserWatches(id);
         }
@@ -55,6 +55,20 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         public void AddUser([FromBody] User user)
         {
             _userService.Add(user);
+        }
+        // POST: api/User
+        [Route("[action]")]
+        [HttpPost("{userId}")]
+        public void AddMovieToWatch(int userId,Movie movie)
+        {
+            _userService.AddMovieToList(userId,movie,"Watch");
+        }
+        // POST: api/User
+        [Route("[action]")]
+        [HttpPost("{userId}")]
+        public void AddMovieToFav(int userId,Movie movie)
+        {
+            _userService.AddMovieToList(userId,movie,"Favorite");
         }
 
         // PUT: api/User/5
@@ -74,17 +88,17 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         }
 
         [Route("[action]")]
-        [HttpDelete]
-        public void DeleteFavs([FromBody] User user,[FromBody]  Movie movie)
+        [HttpDelete("{userId}")]
+        public void DeleteFavs(int userId,[FromBody]  Movie movie)
         {
-            _userService.SoftDeleteMovieToList(user,movie,"Favorite");
+            _userService.SoftDeleteMovieToList(userId, movie,"Favorite");
         }
 
         [Route("[action]")]
-        [HttpDelete]
-        public void DeleteWatches([FromBody] User user,[FromBody]  Movie movie)
+        [HttpDelete("{userId}")]
+        public void DeleteWatches(int userId, [FromBody]  Movie movie)
         {
-            _userService.SoftDeleteMovieToList(user,movie,"Watch");
+            _userService.SoftDeleteMovieToList(userId, movie,"Watch");
         }
     }
 }
