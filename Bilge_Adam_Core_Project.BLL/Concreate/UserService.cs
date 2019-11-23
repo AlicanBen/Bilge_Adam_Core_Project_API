@@ -28,8 +28,6 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
             return await _iUserRepository.AddAsync(user);
         }
 
-
-
       
         public User GetUserById(int userId)
         {
