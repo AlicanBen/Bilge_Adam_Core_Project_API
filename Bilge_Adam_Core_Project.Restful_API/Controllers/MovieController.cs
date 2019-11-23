@@ -25,5 +25,11 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         {
             return _movieService.GetMovieById(id);
         }
+         [Route("[action]")]
+        [HttpPost]
+        public void Add([FromBody] Movie movie)
+        {
+            _movieService.Add(movie);
+        }
     }
 }
