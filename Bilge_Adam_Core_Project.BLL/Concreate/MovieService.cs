@@ -17,6 +17,7 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
         }
         public bool Add(Movie movie)
         {
+            movie.DateOfAdd = DateTime.Now;
             return _iMovieRepository.Add(movie);
         }
 

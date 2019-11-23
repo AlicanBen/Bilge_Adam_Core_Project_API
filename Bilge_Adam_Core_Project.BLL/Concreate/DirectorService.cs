@@ -17,6 +17,7 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
         }
         public bool Add(Director director)
         {
+            director.DateOfAdd = DateTime.Now;
             return _iDirectorRepository.Add(director);
         }
 
