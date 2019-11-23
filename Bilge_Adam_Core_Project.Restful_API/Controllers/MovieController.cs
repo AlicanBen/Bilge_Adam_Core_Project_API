@@ -14,21 +14,20 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
-        MovieService _movieService = new MovieService(new MovieRepository());
+        readonly MovieService _movieService = new MovieService(new MovieRepository());
         [HttpGet]
         public ICollection<Movie> GetMovieList()
         {
             return _movieService.GetMovieList();
         }
 
-        [Route("[action]")]
         [HttpGet("{id}")]
         public Movie GetMovieById(int id)
         {
             return _movieService.GetMovieById(id);
         }
-        [Route("[action]")]
-        [HttpGet("{id}")]
+        [Route("[action]/{movieId}")]
+        [HttpGet]
         public ICollection<Director> GetMovieDirectors(int movieId)
         {
             return _movieService.MovieDirectors(movieId);

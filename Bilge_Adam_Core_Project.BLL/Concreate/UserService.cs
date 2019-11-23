@@ -10,8 +10,8 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
 {
     public class UserService : IUserService
     {
-        I_Fav_Watch_List _i_Fav_Watch_List;
-        IUserRepository _iUserRepository;
+        readonly I_Fav_Watch_List  _i_Fav_Watch_List;
+        readonly IUserRepository   _iUserRepository;
         public UserService(IUserRepository userRepository, I_Fav_Watch_List i_Fav_Watch_List)
         {
             _iUserRepository = userRepository;

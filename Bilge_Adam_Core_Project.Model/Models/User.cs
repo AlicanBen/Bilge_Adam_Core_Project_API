@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace Bilge_Adam_Core_Project.Model.Models
 {
@@ -27,7 +28,7 @@ namespace Bilge_Adam_Core_Project.Model.Models
         public string Mail { get; set; }
         [Required]
         public string Password { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Fav_Watch_List> Fav_Watch_List { get; set; }
     }
 }

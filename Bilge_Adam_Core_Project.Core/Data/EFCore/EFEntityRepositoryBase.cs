@@ -15,13 +15,16 @@ namespace Bilge_Adam_Core_Project.Core.Data.EFCore
     {
         public bool Add(TEntity entity)
         {
-            int isAdded;
-            using (var context=new TContext())
-            {
-                var addedEntity = context.Entry(entity);
-                addedEntity.State = EntityState.Added;
-               isAdded = context.SaveChanges();
-            }
+            int isAdded=0;
+            try {
+                using (var context = new TContext())
+                {
+                    var addedEntity = context.Entry(entity);
+                    addedEntity.State = EntityState.Added;
+                    isAdded = context.SaveChanges();
+                }
+            } catch(Exception e) { }
+            
             return isAdded > 0 ? true:false;
         }
 

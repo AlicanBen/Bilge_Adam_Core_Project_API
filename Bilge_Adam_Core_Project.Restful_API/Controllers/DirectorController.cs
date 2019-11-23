@@ -30,8 +30,8 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         }
 
         // GET: api/DirectorMovies/5
-        [Route("[action]")]
-        [HttpGet("{id}")]
+        [Route("[action]/{id}")]
+        [HttpGet]
         public ICollection<Movie> DirectorMovies(int id)
         {
             return _directorService.DirectorMovies(id);
@@ -47,7 +47,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
 
         // PUT: api/Director/5
         [Route("[action]")]
-        [HttpPut("{id}")]
+        [HttpPut]
         public void Update([FromBody] Director value)
         {
             _directorService.Update(value);

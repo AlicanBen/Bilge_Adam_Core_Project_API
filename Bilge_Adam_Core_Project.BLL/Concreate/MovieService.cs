@@ -10,7 +10,7 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
 {
     public class MovieService : IMovieService
     {
-        IMovieRepository _iMovieRepository;
+        readonly IMovieRepository _iMovieRepository;
         public MovieService(IMovieRepository movieRepository)
         {
             _iMovieRepository = movieRepository;

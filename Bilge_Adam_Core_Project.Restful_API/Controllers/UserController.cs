@@ -15,7 +15,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        UserService _userService = new UserService(new UserRepository(),new Fav_Watch_List_Repository());
+        readonly UserService _userService = new UserService(new UserRepository(),new Fav_Watch_List_Repository());
      
         // GET: api/User
         [HttpGet]
@@ -57,21 +57,21 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
             _userService.Add(user);
         }
         // POST: api/User
-        [Route("[action]")]
-        [HttpPost("{userId}")]
+        [Route("[action]/{userId}")]
+        [HttpPost]
         public void AddMovieToWatch(int userId,Movie movie)
         {
             _userService.AddMovieToList(userId,movie,"Watch");
         }
-        // POST: api/User
-        [Route("[action]")]
-        [HttpPost("{userId}")]
+        // POST: api/User/AddMovieToFav/4
+        [Route("[action]/{userId}")]
+        [HttpPost]
         public void AddMovieToFav(int userId,Movie movie)
         {
             _userService.AddMovieToList(userId,movie,"Favorite");
         }
 
-        // PUT: api/User/5
+        // PUT: api/User/UpdateUser
         [Route("[action]")]
         [HttpPut]
         public void UpdateUser( [FromBody] User user)
