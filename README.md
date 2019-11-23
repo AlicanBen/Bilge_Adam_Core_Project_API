@@ -1,0 +1,1 @@
+# Bilge_Adam_Core_Project_API
