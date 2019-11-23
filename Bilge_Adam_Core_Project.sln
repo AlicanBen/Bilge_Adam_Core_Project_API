@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29509.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bilge_Adam_Core_Project.Core", "Bilge_Adam_Core_Project.Core\Bilge_Adam_Core_Project.Core.csproj", "{6B5E0DE7-F6EE-455E-A43E-A7A95EDB35B4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bilge_Adam_Core_Project.Dal", "Bilge_Adam_Core_Project.Dal\Bilge_Adam_Core_Project.Dal.csproj", "{B120004A-2320-4D8E-8A9A-8278C5C67996}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bilge_Adam_Core_Project.BLL", "Bilge_Adam_Core_Project.BLL\Bilge_Adam_Core_Project.BLL.csproj", "{10A08B9D-3D5B-4CA9-AFEC-7DA317184B5E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bilge_Adam_Core_Project.Model", "Bilge_Adam_Core_Project.Model\Bilge_Adam_Core_Project.Model.csproj", "{F2296D33-DD81-4020-923D-082A771EECB8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bilge_Adam_Core_Project.Restful_API", "Bilge_Adam_Core_Project.Restful_API\Bilge_Adam_Core_Project.Restful_API.csproj", "{64514612-9856-4254-A3B1-4D1EA6EB7C3A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B5E0DE7-F6EE-455E-A43E-A7A95EDB35B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B5E0DE7-F6EE-455E-A43E-A7A95EDB35B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B5E0DE7-F6EE-455E-A43E-A7A95EDB35B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B5E0DE7-F6EE-455E-A43E-A7A95EDB35B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B120004A-2320-4D8E-8A9A-8278C5C67996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B120004A-2320-4D8E-8A9A-8278C5C67996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B120004A-2320-4D8E-8A9A-8278C5C67996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B120004A-2320-4D8E-8A9A-8278C5C67996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10A08B9D-3D5B-4CA9-AFEC-7DA317184B5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10A08B9D-3D5B-4CA9-AFEC-7DA317184B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10A08B9D-3D5B-4CA9-AFEC-7DA317184B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10A08B9D-3D5B-4CA9-AFEC-7DA317184B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2296D33-DD81-4020-923D-082A771EECB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2296D33-DD81-4020-923D-082A771EECB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2296D33-DD81-4020-923D-082A771EECB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2296D33-DD81-4020-923D-082A771EECB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64514612-9856-4254-A3B1-4D1EA6EB7C3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64514612-9856-4254-A3B1-4D1EA6EB7C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64514612-9856-4254-A3B1-4D1EA6EB7C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64514612-9856-4254-A3B1-4D1EA6EB7C3A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A4422E3-7335-4F5C-82EC-DC17235983B9}
+	EndGlobalSection
+EndGlobal
