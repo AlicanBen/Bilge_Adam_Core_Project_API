@@ -14,7 +14,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
     [ApiController]
     public class DirectorController : ControllerBase
     {
-        DirectorService _directorService = new DirectorService(new DirectorRepository());
+        readonly DirectorService _directorService = new DirectorService(new DirectorRepository());
         // GET: api/
         [HttpGet]
         public ICollection<Director> GetDirectorList()

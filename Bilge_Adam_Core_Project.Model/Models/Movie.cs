@@ -24,8 +24,9 @@ namespace Bilge_Adam_Core_Project.Model.Models
 
 
         // navigation properties
-        [JsonIgnore]
+       
         public virtual ICollection<DirectorMovies> Directors { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Fav_Watch_List> Fav_Watch_List { get; set; }
 
     }

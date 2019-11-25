@@ -102,7 +102,6 @@ namespace Bilge_Adam_Core_Project.Core.Data.EFCore
 
         public bool SoftDelete(TEntity entity)
         {
-            
             using (var context = new TContext())
             {
                 var SoftDeleteEntity = context.Entry(entity);

@@ -10,8 +10,8 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
 {
     public class UserService : IUserService
     {
-        readonly I_Fav_Watch_List  _i_Fav_Watch_List;
-        readonly IUserRepository   _iUserRepository;
+        readonly I_Fav_Watch_List _i_Fav_Watch_List;
+        readonly IUserRepository _iUserRepository;
         public UserService(IUserRepository userRepository, I_Fav_Watch_List i_Fav_Watch_List)
         {
             _iUserRepository = userRepository;
@@ -27,7 +27,7 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
         {
             return await _iUserRepository.AddAsync(user);
         }
-      
+
         public User GetUserById(int userId)
         {
             return _iUserRepository.Get(x => x.Id == userId);
@@ -60,7 +60,7 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
             return await _iUserRepository.SoftDeleteAsync(user);
         }
 
- 
+
 
         public bool Update(User user)
         {
@@ -72,9 +72,9 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
             return await _iUserRepository.UpdateAsync(user);
         }
 
-      
 
-        public bool AddMovieToList(int userId,  Movie movie, string type)
+
+        public bool AddMovieToList(int userId, Movie movie, string type)
         {
             Fav_Watch_List fav_Watch = new Fav_Watch_List
             {
@@ -83,7 +83,7 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
                 User = _iUserRepository.Get(x => x.Id == userId),
                 UserId = userId,
                 IsDelete = false,
-                ListType =type,
+                ListType = type,
                 DateOfAdd = DateTime.Now
             };
             return _i_Fav_Watch_List.Add(fav_Watch);
@@ -92,16 +92,9 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
 
         public bool SoftDeleteMovieToList(int userId, Movie movie, string type)
         {
-            Fav_Watch_List fav_Watch = new Fav_Watch_List
-            {
-                Movie = movie,
-                MovieId = movie.Id,
-                User = _iUserRepository.Get(x => x.Id == userId),
-                UserId =userId,
-                IsDelete = false,
-                ListType =type,
-                DateOfAdd = DateTime.Now
-            };
+            Fav_Watch_List fav_Watch = _i_Fav_Watch_List.Get(x => x.Movie == movie &&
+                x.UserId == userId && x.ListType == type);
+            fav_Watch.IsDelete = true;
             return _i_Fav_Watch_List.SoftDelete(fav_Watch);
         }
     }
