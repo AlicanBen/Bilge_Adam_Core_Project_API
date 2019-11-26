@@ -21,14 +21,22 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         [HttpGet]
         public ICollection<User> GetUserList()
         {
-            return _userService.GetUserList();
+            ICollection<User> users = new List<User>();
+            foreach (var item in _userService.GetUserList())
+            {
+                item.Password = "******";
+                users.Add(item);
+            }
+            return users;
         }
 
         // GET: api/User/5
         [HttpGet("{id}", Name = "GetUserById")]
         public User GetUserById(int id)
         {
-            return _userService.GetUserById(id);
+            User user = _userService.GetUserById(id);
+            user.Password= "******";
+            return user;
         }
 
         // GET: api/User/GetUserFavs/1
