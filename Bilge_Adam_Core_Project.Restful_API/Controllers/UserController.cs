@@ -26,7 +26,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
             {
                 item.Password = "******";
                 users.Add(item);
-            }
+            } 
             return users;
         }
 
