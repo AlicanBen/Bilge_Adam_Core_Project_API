@@ -17,6 +17,8 @@ namespace Bilge_Adam_Core_Project.Model.Models
         }
         [Required]
         public string Name { get; set; }
+        public string Details { get; set; }
+        public string PhotoUrl { get; set; }
         public string Genre { get; set; }
         public string Duration { get; set; }
         public DateTime ReleaseDate { get; set; }
