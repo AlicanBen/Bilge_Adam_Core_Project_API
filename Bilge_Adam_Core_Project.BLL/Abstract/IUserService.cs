@@ -9,6 +9,7 @@ namespace Bilge_Adam_Core_Project.BLL.Abstract
     public interface IUserService
     {
         User GetUserById(int userId);
+        User GetUserByUserName(string userName);
         ICollection<User> GetUserList();
         ICollection<Movie> GetAllUserFavs(int userId);
         ICollection<Movie> GetAllUserWatches(int userId);

@@ -1,9 +1,10 @@
 ﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Bilge_Adam_Core_Project.Dal.Migrations
 {
-    public partial class version_10 : Migration
+    public partial class version_12 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,10 +13,12 @@ namespace Bilge_Adam_Core_Project.Dal.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DateOfAdd = table.Column<DateTime>(nullable: false),
-                    IsDelete = table.Column<short>(nullable: false),
+                    IsDelete = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(nullable: false),
+                    Details = table.Column<string>(nullable: true),
+                    PhotoUrl = table.Column<string>(nullable: true),
                     Surname = table.Column<string>(nullable: false),
                     BirthDate = table.Column<DateTime>(nullable: false),
                     BirthPlace = table.Column<string>(nullable: true)
@@ -30,10 +33,12 @@ namespace Bilge_Adam_Core_Project.Dal.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DateOfAdd = table.Column<DateTime>(nullable: false),
-                    IsDelete = table.Column<short>(nullable: false),
+                    IsDelete = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(nullable: false),
+                    Details = table.Column<string>(nullable: true),
+                    PhotoUrl = table.Column<string>(nullable: true),
                     Genre = table.Column<string>(nullable: true),
                     Duration = table.Column<string>(nullable: true),
                     ReleaseDate = table.Column<DateTime>(nullable: false),
@@ -49,13 +54,13 @@ namespace Bilge_Adam_Core_Project.Dal.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DateOfAdd = table.Column<DateTime>(nullable: false),
-                    IsDelete = table.Column<short>(nullable: false),
+                    IsDelete = table.Column<bool>(nullable: false),
                     Name = table.Column<string>(nullable: false),
                     Surname = table.Column<string>(nullable: false),
                     Username = table.Column<string>(nullable: false),
-                    IsAdmin = table.Column<short>(nullable: false),
+                    IsAdmin = table.Column<bool>(nullable: false),
                     Mail = table.Column<string>(nullable: false),
                     Password = table.Column<string>(nullable: false)
                 },
@@ -69,9 +74,9 @@ namespace Bilge_Adam_Core_Project.Dal.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DateOfAdd = table.Column<DateTime>(nullable: false),
-                    IsDelete = table.Column<short>(nullable: false),
+                    IsDelete = table.Column<bool>(nullable: false),
                     MovieId = table.Column<int>(nullable: false),
                     DirectorId = table.Column<int>(nullable: false)
                 },
@@ -97,9 +102,9 @@ namespace Bilge_Adam_Core_Project.Dal.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("MySQL:AutoIncrement", true),
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     DateOfAdd = table.Column<DateTime>(nullable: false),
-                    IsDelete = table.Column<short>(nullable: false),
+                    IsDelete = table.Column<bool>(nullable: false),
                     UserId = table.Column<int>(nullable: false),
                     MovieId = table.Column<int>(nullable: false),
                     ListType = table.Column<string>(nullable: false)

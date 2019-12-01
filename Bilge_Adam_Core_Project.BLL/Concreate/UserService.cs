@@ -32,7 +32,10 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
         {
             return _iUserRepository.Get(x => x.Id == userId);
         }
-
+        public User GetUserByUserName(string username)
+        {
+            return _iUserRepository.Get(x => x.Username == username);
+        }
         public ICollection<Movie> GetAllUserFavs(int userId)
         {
             return _iUserRepository.UserFavs(userId);

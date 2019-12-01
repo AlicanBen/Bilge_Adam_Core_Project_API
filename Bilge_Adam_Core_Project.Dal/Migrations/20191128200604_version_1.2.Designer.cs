@@ -3,14 +3,16 @@ using System;
 using Bilge_Adam_Core_Project.Dal.Concreate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Bilge_Adam_Core_Project.Dal.Migrations
 {
     [DbContext(typeof(BilgeAdamCoreProjectContext))]
-    partial class BilgeAdamCoreProjectContextModelSnapshot : ModelSnapshot
+    [Migration("20191128200604_version_1.2")]
+    partial class version_12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

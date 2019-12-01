@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Bilge_Adam_Core_Project.BLL.Concreate;
 using Bilge_Adam_Core_Project.Dal.Concreate;
 using Bilge_Adam_Core_Project.Model.Models;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +13,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("AllowOrigin")]
     public class MovieController : ControllerBase
     {
         readonly MovieService _movieService = new MovieService(new MovieRepository());
