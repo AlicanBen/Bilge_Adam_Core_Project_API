@@ -30,25 +30,50 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
 
         public User GetUserById(int userId)
         {
-            return _iUserRepository.Get(x => x.Id == userId);
+            return _iUserRepository.Get(x => x.Id == userId && x.IsDelete == false);
         }
         public User GetUserByUserName(string username)
         {
-            return _iUserRepository.Get(x => x.Username == username);
+            return _iUserRepository.Get(x => x.Username == username && x.IsDelete == false);
         }
         public ICollection<Movie> GetAllUserFavs(int userId)
         {
-            return _iUserRepository.UserFavs(userId);
+
+            List<Movie> userfavs = new List<Movie>();
+            foreach (var item in _iUserRepository.UserFavs(userId))
+            {
+                if (item.IsDelete == false)
+                {
+                    userfavs.Add(item);
+                }
+            }
+            return userfavs;
         }
 
         public ICollection<User> GetUserList()
         {
+            List<User> users = new List<User>();
+            foreach (var item in _iUserRepository.GetAll())
+            {
+                if (item.IsDelete == false)
+                {
+                    users.Add(item);
+                }
+            }
             return _iUserRepository.GetAll();
         }
 
         public ICollection<Movie> GetAllUserWatches(int userId)
         {
-            return _iUserRepository.UserWatches(userId);
+            List<Movie> userwatches = new List<Movie>();
+            foreach (var item in _iUserRepository.UserWatches(userId))
+            {
+                if (item.IsDelete == false)
+                {
+                    userwatches.Add(item);
+                }
+            }
+            return userwatches;
         }
 
         public bool SoftDelete(User user)
@@ -89,7 +114,8 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
                 ListType = type,
                 DateOfAdd = DateTime.Now
             };
-            return _i_Fav_Watch_List.Add(fav_Watch);
+          
+            return _i_Fav_Watch_List.addToList(fav_Watch);
 
         }
 

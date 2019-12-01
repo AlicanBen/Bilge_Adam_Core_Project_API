@@ -45,7 +45,7 @@ namespace Bilge_Adam_Core_Project.Dal.Concreate
             using (var context = new BilgeAdamCoreProjectContext())
             {
                 foreach (var item in context.List
-                    .Where(x => x.UserId == userId && x.ListType == "Watch")
+                    .Where(x => x.UserId == userId && x.ListType == "Watch" && x.IsDelete == false)
                     .ToList())
                 {
                     userWatchs.Add(await context.Movie.FindAsync(item.MovieId));

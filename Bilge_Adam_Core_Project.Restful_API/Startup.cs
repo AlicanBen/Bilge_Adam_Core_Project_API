@@ -29,10 +29,14 @@ namespace Bilge_Adam_Core_Project.Restful_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(c =>
-            {
-                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin());
-            });
+            services.AddCors(action =>
+    action.AddPolicy("AllowOrigin", builder =>
+      builder
+       .AllowAnyMethod()
+       .AllowAnyHeader()
+  .WithOrigins("http://localhost:3000")
+
+       .AllowCredentials()));
             //var conn = Configuration.GetConnectionString("xqRoJ1FKnq");
             //services.AddDbContext<BilgeAdamCoreProjectContext>(options => options.UseMySql(conn));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Latest);
@@ -42,7 +46,7 @@ namespace Bilge_Adam_Core_Project.Restful_API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors(options => options.AllowAnyOrigin());
+            app.UseCors("AllowOrigin");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

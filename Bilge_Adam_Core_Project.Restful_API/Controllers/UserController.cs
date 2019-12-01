@@ -104,14 +104,14 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         }
 
         [Route("[action]/{userId}")]
-        [HttpDelete]
+        [HttpPut]
         public void DeleteFavs(int userId, [FromBody]  Movie movie)
         {
             _userService.SoftDeleteMovieToList(userId, movie, "Favorite");
         }
 
         [Route("[action]/{userId}")]
-        [HttpDelete("{userId}")]
+        [HttpPut]
         public void DeleteWatches(int userId, [FromBody]  Movie movie)
         {
             _userService.SoftDeleteMovieToList(userId, movie, "Watch");

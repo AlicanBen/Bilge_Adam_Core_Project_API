@@ -28,17 +28,35 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
 
         public Movie GetMovieById(int movieId)
         {
-            return _iMovieRepository.Get(x => x.Id == movieId);
+            Movie movie = _iMovieRepository.Get(x => x.Id == movieId&&x.IsDelete==false);
+            movie.ReleaseDate = new DateTime(movie.ReleaseDate.Year, movie.ReleaseDate.Month, movie.ReleaseDate.Day);
+            return  movie;
         }
 
         public ICollection<Movie> GetMovieList()
         {
-            return _iMovieRepository.GetAll();
+            List<Movie> movies = new List<Movie>();
+            foreach (var item in _iMovieRepository.GetAll())
+            {
+                item.ReleaseDate = new DateTime(item.ReleaseDate.Year, item.ReleaseDate.Month, item.ReleaseDate.Day);
+                if (item.IsDelete == false) { 
+                movies.Add(item);
+                }
+            }
+            return movies;
         }
 
         public List<Director> MovieDirectors(int movieId)
         {
-            return _iMovieRepository.MovieDirectors(movieId);
+            List<Director> directors = new List<Director>();
+            foreach (var item in _iMovieRepository.MovieDirectors(movieId))
+            {
+                if (item.IsDelete == false)
+                {
+                    directors.Add(item);
+                }
+            }
+            return directors;
         }
 
         public async Task<List<Director>> MovieDirectorsAsync(int movieId)

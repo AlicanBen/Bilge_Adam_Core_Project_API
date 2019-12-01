@@ -8,5 +8,7 @@ namespace Bilge_Adam_Core_Project.Dal.Abstract
 {
     public interface I_Fav_Watch_List  : IEntityRepository<Fav_Watch_List>
     {
+        public bool addToList(Fav_Watch_List list);
+
     }
 }

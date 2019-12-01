@@ -19,9 +19,13 @@ namespace Bilge_Adam_Core_Project.Core.Data.EFCore
             try {
                 using (var context = new TContext())
                 {
-                    var addedEntity = context.Entry(entity);
-                    addedEntity.State = EntityState.Added;
-                    isAdded = context.SaveChanges();
+                    TEntity e = (Get(x => x==entity));
+                    if(e == null)
+                    {
+                        var addedEntity = context.Entry(entity);
+                        addedEntity.State = EntityState.Added;
+                        isAdded = context.SaveChanges();
+                    }
                 }
             } catch(Exception e) { }
             
@@ -30,12 +34,16 @@ namespace Bilge_Adam_Core_Project.Core.Data.EFCore
 
         public async Task<bool> AddAsync(TEntity entity)
         {
-            int isAdded;
+            
+            int isAdded=0;
             using (var context = new TContext())
             {
-                var addedEntity = context.Entry(entity);
+                if (Get(x => x.Equals(entity)) != null)
+                {
+                    var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
                isAdded = await context.SaveChangesAsync();
+                }
             }
             return isAdded > 0 ? true : false;
         }

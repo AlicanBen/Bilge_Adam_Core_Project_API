@@ -16,7 +16,7 @@ namespace Bilge_Adam_Core_Project.Dal.Concreate
             List<Director> movieDirectors = new List<Director>();
             using (var context = new BilgeAdamCoreProjectContext())
             {
-                List<DirectorMovies> tmpList = context.DirectorMovies.Where(x => x.MovieId == movieId).ToList();
+                List<DirectorMovies> tmpList = context.DirectorMovies.Where(x => x.MovieId == movieId &&x.IsDelete==false).ToList();
                 foreach (var item in tmpList)
                 {
                     movieDirectors.Add(await context.Director.FindAsync(item.DirectorId));
@@ -30,7 +30,7 @@ namespace Bilge_Adam_Core_Project.Dal.Concreate
             List<Director> movieDirectors = new List<Director>();
             using (var context = new BilgeAdamCoreProjectContext())
             {
-                List<DirectorMovies> tmpList = context.DirectorMovies.Where(x => x.MovieId == movieId).ToList();
+                List<DirectorMovies> tmpList = context.DirectorMovies.Where(x => x.MovieId == movieId && x.IsDelete == false).ToList();
                 foreach (var item in tmpList)
                 {
                     movieDirectors.Add(context.Director.Find(item.DirectorId));

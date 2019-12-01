@@ -29,23 +29,49 @@ namespace Bilge_Adam_Core_Project.BLL.Concreate
 
         public List<Movie> DirectorMovies(int directorId)
         {
-            return _iDirectorRepository.DirectorMovies(directorId);
+            List<Movie> movies = new List<Movie>();
+            foreach (var item in _iDirectorRepository.DirectorMovies(directorId))
+            {
+                if (item.IsDelete == false)
+                {
+                    movies.Add(item);
+                }
+            }
+            return movies;
         }
 
         public async Task<List<Movie>> DirectorMoviesAsync(int directorId)
         {
-            return await _iDirectorRepository.AsyncDirectorMovies(directorId);
+              List<Movie> movies = new List<Movie>();
+            
+           foreach ( var item  in _iDirectorRepository.DirectorMovies(directorId))
+            {
+                if (item.IsDelete == false)
+                {
+                    movies.Add(item);
+                }
+            }
+            return  movies;
 
         }
 
         public Director GetDirectorById(int directorId)
         {
-            return _iDirectorRepository.Get(x => x.Id == directorId);
+            return _iDirectorRepository.Get(x => x.Id == directorId && x.IsDelete==false);
         }
 
         public ICollection<Director> GetDirectorList()
         {
-            return _iDirectorRepository.GetAll();
+            List<Director> directors = new List<Director>();
+
+            foreach (var item in _iDirectorRepository.GetAll())
+            {
+                if (item.IsDelete == false)
+                {
+                    directors.Add(item);
+                }
+            }
+            return directors;
         }
 
         public bool SoftDelete(Director director)
