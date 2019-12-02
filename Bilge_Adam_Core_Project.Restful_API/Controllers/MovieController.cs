@@ -45,13 +45,13 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         
         [Route("[action]")]
         [HttpPost]
-        public void Add([FromBody] Movie movie)
+        public void AddMovie([FromBody] Movie movie)
         {
             _movieService.Add(movie);
         }
 
         [Route("[action]")]
-        [HttpDelete]
+        [HttpPut]
         public void Delete([FromBody] Movie movie)
         {
             _movieService.SoftDelete(movie);

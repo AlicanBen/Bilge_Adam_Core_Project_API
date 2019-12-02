@@ -23,13 +23,8 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         [HttpGet]
         public ICollection<User> GetUserList()
         {
-            ICollection<User> users = new List<User>();
-            foreach (var item in _userService.GetUserList())
-            {
-                item.Password = "******";
-                users.Add(item);
-            }
-            return users;
+           
+            return _userService.GetUserList();
         }
 
         [Route("[action]/{username}")]
@@ -42,9 +37,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
         [HttpGet("{id}", Name = "GetUserById")]
         public User GetUserById(int id)
         {
-            User user = _userService.GetUserById(id);
-            user.Password = "******";
-            return user;
+            return _userService.GetUserById(id); ;
         }
 
         // GET: api/User/GetUserFavs/1
@@ -97,7 +90,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
 
         // DELETE: api/ApiWithActions/5
         [Route("[action]")]
-        [HttpDelete]
+        [HttpPut]
         public void Delete([FromBody] User user)
         {
             _userService.SoftDelete(user);

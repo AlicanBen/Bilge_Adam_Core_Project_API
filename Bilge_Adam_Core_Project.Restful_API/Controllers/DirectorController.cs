@@ -57,7 +57,7 @@ namespace Bilge_Adam_Core_Project.Restful_API.Controllers
 
         // DELETE: api/ApiWithActions/5
         [Route("[action]")]
-        [HttpDelete]
+        [HttpPut]
         public void Delete(Director director)
         {
             _directorService.SoftDelete(director);
